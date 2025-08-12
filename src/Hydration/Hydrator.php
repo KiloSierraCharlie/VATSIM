@@ -102,7 +102,7 @@ class Hydrator
         return $obj;
     }
 
-    public static function fromResponse(string $className, ResponseInterface $response): object
+    public static function fromResponse(string $className, ResponseInterface $response, ?string $dataPath = null): object
     {
         $data = json_decode(
             $response->getBody()->getContents(),
@@ -114,7 +114,11 @@ class Hydrator
             throw new \InvalidArgumentException('Response JSON did not decode to an array');
         }
 
-        return self::hydrate($className, $data);
+        if (null !== $dataPath && !array_key_exists($dataPath, $data)) {
+            throw new InvalidResponseException('Response JSON did not decode to an array');
+        }
+
+        return self::hydrate($className, null !== $dataPath ? $data[$dataPath] : $data);
     }
 
     private static function validateMandatoryAttributes(object $obj, string $className): void
