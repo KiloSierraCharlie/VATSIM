@@ -54,7 +54,7 @@ class Hydrator
             $propType = $propTypeRef?->getName();
 
             // Model based hydration:
-            if ($propType && class_exists($propType) && is_subclass_of($propType, HydratableFromArray::class)) {
+            if ($propType && class_exists($propType) && ( is_subclass_of($propType, HydratableFromArray::class)||is_subclass_of($propType, HydrateFromModel::class) )) {
                 if (!$value instanceof $propType) {
                     if (!is_array($value)) {
                         throw new \InvalidArgumentException(sprintf('Expected array to hydrate %s for property %s::%s, got %s', $propType, $className, $name, get_debug_type($value)));
@@ -71,6 +71,36 @@ class Hydrator
                 $value = is_bool($value) ? $value : in_array($value, [1, '1', true], true);
             } elseif ('string' === $propType) {
                 $value = null !== $value ? (string) $value : null;
+            }if (enum_exists($propType)) {
+                if (is_subclass_of($propType, \BackedEnum::class)) {
+                    if ($value === null) {
+                        if ($propType->allowsNull()) {
+                            $object->$propName = null;
+                            continue;
+                        }
+                        throw new InvalidResponseException("Null given for non-nullable enum {$propType} \${$propName}");
+                    }
+
+                    $enumRefl = new \ReflectionEnum($propType);
+                    $backing = $enumRefl->getBackingType()?->getName();
+
+                    if ($backing === 'int' && is_string($value) && is_numeric($value)) {
+                        $value = (int) $value;
+                    }
+
+                    $enumVal = $propType::tryFrom($value);
+                    if ($enumVal === null) {
+                        throw new InvalidResponseException("Invalid value '{$value}' for enum {$propType} on \${$propName}");
+                    }
+
+                    $value = $enumVal;
+                } else {
+                    if (is_string($value) && defined("$propType::$value")) {
+                        $value = constant("$propType::$value");
+                    } elseif (!$value instanceof $propType) {
+                        throw new InvalidResponseException("Value for \${$propName} must be instance of {$propType}");
+                    }
+                }
             }
 
             if ($propTypeRef && !$propTypeRef->allowsNull() && null === $value) {
