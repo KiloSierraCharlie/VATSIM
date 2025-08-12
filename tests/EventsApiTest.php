@@ -16,7 +16,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 use KiloSierraCharlie\VATSIM\EventsApi;
-use KiloSierraCharlie\VATSIM\Models\EventType;
+use KiloSierraCharlie\VATSIM\Enums\EventType;
 use PHPUnit\Framework\TestCase;
 
 final class EventsApiTest extends TestCase

@@ -8,18 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace KiloSierraCharlie\VATSIM\Models;
+namespace KiloSierraCharlie\VATSIM\Models\EventApi;
 
 use KiloSierraCharlie\VATSIM\Attributes\AsDate;
 use KiloSierraCharlie\VATSIM\Attributes\AsEnum;
-
-enum EventType: string
-{
-    case EVENT = 'Event';
-    case EXAM = 'Controller Examination';
-    case VASOPS = 'VASOPS Event';
-    case UNKNOWN = 'Unknown';
-}
+use KiloSierraCharlie\VATSIM\Enums\EventType;
 
 final class Event
 {

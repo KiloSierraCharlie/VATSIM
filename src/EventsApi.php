@@ -17,14 +17,9 @@ use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
 use KiloSierraCharlie\VATSIM\Exceptions\NotFoundException;
 use KiloSierraCharlie\VATSIM\Exceptions\ServerException;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
-use KiloSierraCharlie\VATSIM\Models\Event;
-use KiloSierraCharlie\VATSIM\Models\EventCollection;
-
-enum EventFilterLocation: string
-{
-    case DIVISION = 'division';
-    case REGION = 'region';
-}
+use KiloSierraCharlie\VATSIM\Models\EventApi\Event;
+use KiloSierraCharlie\VATSIM\Models\EventApi\EventCollection;
+use KiloSierraCharlie\VATSIM\Enums\FilterLocations;
 
 final class EventsApi extends APIHandler
 {

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace KiloSierraCharlie\VATSIM\Models;
+namespace KiloSierraCharlie\VATSIM\Models\EventApi;
 
 final class Organiser
 {

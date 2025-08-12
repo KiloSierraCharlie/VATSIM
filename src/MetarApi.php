@@ -17,7 +17,7 @@ use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
 use KiloSierraCharlie\VATSIM\Exceptions\NotFoundException;
 use KiloSierraCharlie\VATSIM\Exceptions\ServerException;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
-use KiloSierraCharlie\VATSIM\Models\MetarCollection;
+use KiloSierraCharlie\VATSIM\Models\MetarApi\MetarCollection;
 
 final class MetarApi extends APIHandler
 {

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace KiloSierraCharlie\VATSIM\Models;
+namespace KiloSierraCharlie\VATSIM\Models\MetarApi;
 
 use KiloSierraCharlie\VATSIM\Attributes\AsDate;
 use KiloSierraCharlie\VATSIM\Attributes\Mandatory;

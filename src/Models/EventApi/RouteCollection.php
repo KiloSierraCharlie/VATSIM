@@ -8,14 +8,14 @@
  * file that was distributed with this source code.
  */
 
-namespace KiloSierraCharlie\VATSIM\Models;
+namespace KiloSierraCharlie\VATSIM\Models\EventApi;
 
 use KiloSierraCharlie\VATSIM\Hydration\HydratableFromArray;
 
-final class AirportCollection extends HydratableFromArray
+final class RouteCollection extends HydratableFromArray
 {
     protected static function targetClass(): string
     {
-        return Airport::class;
+        return Route::class;
     }
 }

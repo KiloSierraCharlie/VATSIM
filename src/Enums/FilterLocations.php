@@ -8,13 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace KiloSierraCharlie\VATSIM\Models;
+namespace KiloSierraCharlie\VATSIM\Enums;
 
-final class Route
+enum EventFilterLocation: string
 {
-    public string $departure;
-
-    public string $arrival;
-
-    public string $route;
+    case DIVISION = 'division';
+    case REGION = 'region';
 }
