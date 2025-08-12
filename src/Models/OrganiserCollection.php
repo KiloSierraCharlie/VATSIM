@@ -18,18 +18,4 @@ final class OrganiserCollection extends HydratableFromArray
     {
         return Organiser::class;
     }
-
-    /** @var Organiser[] */
-    public array $organisers = [];
-
-    public function __construct(Organiser ...$organisers)
-    {
-        $this->organisers = $organisers;
-    }
-
-    /** @return Organiser[] */
-    public function all(): array
-    {
-        return $this->organisers;
-    }
 }

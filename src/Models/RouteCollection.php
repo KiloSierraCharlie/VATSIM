@@ -18,18 +18,4 @@ final class RouteCollection extends HydratableFromArray
     {
         return Route::class;
     }
-
-    /** @var Route[] */
-    public array $routes = [];
-
-    public function __construct(Route ...$routes)
-    {
-        $this->routes = $routes;
-    }
-
-    /** @return Route[] */
-    public function all(): array
-    {
-        return $this->routes;
-    }
 }

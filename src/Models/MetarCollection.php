@@ -14,14 +14,11 @@ use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 
 final class MetarCollection extends HydratableFromArray
 {
-    /** @var Metar[] */
-    public array $metars = [];
-
-    public function __construct(Metar ...$metars)
+    protected static function targetClass(): string 
     {
-        $this->metars = $metars;
+        return Metar::class;
     }
-
+    
     public static function fromArray(array $data): static
     {
         $clean = array_values(array_filter(array_map(
@@ -35,11 +32,5 @@ final class MetarCollection extends HydratableFromArray
         );
 
         return new static(...$metars);
-    }
-
-    /** @return Metar[] */
-    public function all(): array
-    {
-        return $this->metars;
     }
 }

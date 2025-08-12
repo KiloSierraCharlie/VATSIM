@@ -78,13 +78,13 @@ final class MetarApiTest extends TestCase
         $this->assertCount(3, $results->all());
 
         // Validate first result.
-        $this->assertSame('EGLC', $results->metars[0]->icao);
-        $this->assertEquals(new \DateTimeImmutable('1970-01-12 12:50:00'), $results->metars[0]->observationTime);
-        $this->assertSame('AUTO 22008KT 9999 BKN020 21/13 Q1016', $results->metars[0]->data);
+        $this->assertSame('EGLC', $results->all()[0]->icao);
+        $this->assertEquals(new \DateTimeImmutable('1970-01-12 12:50:00'), $results->all()[0]->observationTime);
+        $this->assertSame('AUTO 22008KT 9999 BKN020 21/13 Q1016', $results->all()[0]->data);
 
         // Validate last result.
-        $this->assertSame('EGLK', $results->metars[2]->icao);
-        $this->assertEquals(new \DateTimeImmutable('1970-01-04 21:20:00'), $results->metars[2]->observationTime);
-        $this->assertSame('24010KT 9999 SCT030 23/13 Q1016', $results->metars[2]->data);
+        $this->assertSame('EGLK', $results->all()[2]->icao);
+        $this->assertEquals(new \DateTimeImmutable('1970-01-04 21:20:00'), $results->all()[2]->observationTime);
+        $this->assertSame('24010KT 9999 SCT030 23/13 Q1016', $results->all()[2]->data);
     }
 }

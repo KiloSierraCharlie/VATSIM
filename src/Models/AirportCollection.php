@@ -18,18 +18,4 @@ final class AirportCollection extends HydratableFromArray
     {
         return Airport::class;
     }
-
-    /** @var Event[] */
-    public array $airports = [];
-
-    public function __construct(Airport ...$airports)
-    {
-        $this->airports = $airports;
-    }
-
-    /** @return Event[] */
-    public function all(): array
-    {
-        return $this->airports;
-    }
 }

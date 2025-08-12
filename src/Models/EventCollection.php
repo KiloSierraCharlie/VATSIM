@@ -18,18 +18,4 @@ final class EventCollection extends HydratableFromArray
     {
         return Event::class;
     }
-
-    /** @var Event[] */
-    public array $events = [];
-
-    public function __construct(Event ...$events)
-    {
-        $this->events = $events;
-    }
-
-    /** @return Event[] */
-    public function all(): array
-    {
-        return $this->events;
-    }
 }
