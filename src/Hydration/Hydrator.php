@@ -54,12 +54,19 @@ class Hydrator
             $propType = $propTypeRef?->getName();
 
             // Model based hydration:
-            if ($propType && class_exists($propType) && ( is_subclass_of($propType, HydratableFromArray::class)||is_subclass_of($propType, HydrateFromModel::class) )) {
+            if ($propType && class_exists($propType) && (is_subclass_of($propType, HydratableFromArray::class) || is_subclass_of($propType, HydrateFromModel::class))) {
                 if (!$value instanceof $propType) {
-                    if (!is_array($value)) {
-                        throw new \InvalidArgumentException(sprintf('Expected array to hydrate %s for property %s::%s, got %s', $propType, $className, $name, get_debug_type($value)));
+                    if (null !== $value) {
+                        if (!is_array($value)) {
+                            throw new \InvalidArgumentException(sprintf('Expected array to hydrate %s for property %s::%s, got %s', $propType, $className, $name, get_debug_type($value)));
+                        }
+                        $value = self::hydrate($propType, $value, $className);
+                    } else {
+                        if (!$propTypeRef->allowsNull()) {
+                            throw new \InvalidArgumentException(sprintf('Expected array to hydrate %s for property %s::%s, got %s', $propType, $className, $name, get_debug_type($value)));
+                        }
+                        $value = null;
                     }
-                    $value = self::hydrate($propType, $value, $className);
                 }
             }
             // Scalars
@@ -73,7 +80,7 @@ class Hydrator
                 $value = null !== $value ? (string) $value : null;
             }if (enum_exists($propType)) {
                 if (is_subclass_of($propType, \BackedEnum::class)) {
-                    if ($value === null) {
+                    if (null === $value) {
                         if ($propType->allowsNull()) {
                             $object->$propName = null;
                             continue;
@@ -84,12 +91,12 @@ class Hydrator
                     $enumRefl = new \ReflectionEnum($propType);
                     $backing = $enumRefl->getBackingType()?->getName();
 
-                    if ($backing === 'int' && is_string($value) && is_numeric($value)) {
+                    if ('int' === $backing && is_string($value) && is_numeric($value)) {
                         $value = (int) $value;
                     }
 
                     $enumVal = $propType::tryFrom($value);
-                    if ($enumVal === null) {
+                    if (null === $enumVal) {
                         throw new InvalidResponseException("Invalid value '{$value}' for enum {$propType} on \${$propName}");
                     }
 
