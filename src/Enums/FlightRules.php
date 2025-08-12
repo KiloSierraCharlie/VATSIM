@@ -12,7 +12,7 @@ namespace KiloSierraCharlie\VATSIM\Enums;
 
 enum FlightRules: string
 {
-    case IFR = "I";
-    case VFR = "V";
-    case UNKNOWN = "";
+    case IFR = 'I';
+    case VFR = 'V';
+    case UNKNOWN = '';
 }

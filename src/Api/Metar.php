@@ -12,13 +12,13 @@ namespace KiloSierraCharlie\VATSIM\Api;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\TransferException;
+use KiloSierraCharlie\VATSIM\APIHandler;
 use KiloSierraCharlie\VATSIM\Exceptions\AccessDeniedException;
 use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
 use KiloSierraCharlie\VATSIM\Exceptions\NotFoundException;
 use KiloSierraCharlie\VATSIM\Exceptions\ServerException;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 use KiloSierraCharlie\VATSIM\Models\MetarApi\MetarCollection;
-use KiloSierraCharlie\VATSIM\APIHandler;
 
 final class Metar extends APIHandler
 {

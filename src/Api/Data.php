@@ -12,6 +12,7 @@ namespace KiloSierraCharlie\VATSIM\Api;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\TransferException;
+use KiloSierraCharlie\VATSIM\APIHandler;
 use KiloSierraCharlie\VATSIM\Enums\ServerType;
 use KiloSierraCharlie\VATSIM\Exceptions\AccessDeniedException;
 use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
@@ -22,7 +23,6 @@ use KiloSierraCharlie\VATSIM\Models\DataApi\ATISCollection;
 use KiloSierraCharlie\VATSIM\Models\DataApi\AudioClientCollection;
 use KiloSierraCharlie\VATSIM\Models\DataApi\NetworkData;
 use KiloSierraCharlie\VATSIM\Models\DataApi\ServerCollection;
-use KiloSierraCharlie\VATSIM\APIHandler;
 
 final class Data extends APIHandler
 {

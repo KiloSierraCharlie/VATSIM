@@ -12,6 +12,7 @@ namespace KiloSierraCharlie\VATSIM\Api;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\TransferException;
+use KiloSierraCharlie\VATSIM\APIHandler;
 use KiloSierraCharlie\VATSIM\Exceptions\AccessDeniedException;
 use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
 use KiloSierraCharlie\VATSIM\Exceptions\NotFoundException;
@@ -19,8 +20,6 @@ use KiloSierraCharlie\VATSIM\Exceptions\ServerException;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 use KiloSierraCharlie\VATSIM\Models\EventApi\Event;
 use KiloSierraCharlie\VATSIM\Models\EventApi\EventCollection;
-use KiloSierraCharlie\VATSIM\Enums\FilterLocations;
-use KiloSierraCharlie\VATSIM\APIHandler;
 
 final class Events extends APIHandler
 {

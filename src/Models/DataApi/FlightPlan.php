@@ -11,9 +11,9 @@
 namespace KiloSierraCharlie\VATSIM\Models\DataApi;
 
 use KiloSierraCharlie\VATSIM\Attributes\AsDate;
-use KiloSierraCharlie\VATSIM\Hydration\HydrateFromModel;
-use KiloSierraCharlie\VATSIM\Enums\FlightRules;
 use KiloSierraCharlie\VATSIM\Attributes\AsEnum;
+use KiloSierraCharlie\VATSIM\Enums\FlightRules;
+use KiloSierraCharlie\VATSIM\Hydration\HydrateFromModel;
 
 final class FlightPlan extends HydrateFromModel
 {
