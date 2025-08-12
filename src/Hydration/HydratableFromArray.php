@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  * (c) Kieran Cross
@@ -6,10 +7,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace KiloSierraCharlie\VATSIM\Hydration;
 
 /**
  * @template T of object
+ *
  * @implements \IteratorAggregate<int,T>
  */
 abstract class HydratableFromArray implements \IteratorAggregate, \Countable
@@ -39,7 +42,7 @@ abstract class HydratableFromArray implements \IteratorAggregate, \Countable
     public static function fromArray(array $data): static
     {
         $objs = array_map(
-            static fn(array $row) => Hydrator::hydrate(static::targetClass(), $row, static::class),
+            static fn (array $row) => Hydrator::hydrate(static::targetClass(), $row, static::class),
             $data
         );
 

@@ -6,7 +6,7 @@ namespace KiloSierraCharlie\VATSIM\Attributes;
 class AsDate
 {
     /**
-     * @param string|\DateTimeZone|null $timezone Accepts both TZ string and object.
+     * @param string|\DateTimeZone|null $timezone accepts both TZ string and object
      */
     public function __construct(
         public string $format = 'Y-m-d',
@@ -36,9 +36,10 @@ class AsDate
             if (!$dt) {
                 return null;
             }
-            return $dt->setDate((int)$dt->format('Y'), (int)$dt->format('m'), 1);
+
+            return $dt->setDate((int) $dt->format('Y'), (int) $dt->format('m'), 1);
         }
 
-        return \DateTimeImmutable::createFromFormat('!' . $this->format, $value, $tz) ?: null;
+        return \DateTimeImmutable::createFromFormat('!'.$this->format, $value, $tz) ?: null;
     }
 }

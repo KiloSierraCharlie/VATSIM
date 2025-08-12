@@ -17,7 +17,6 @@ use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
 use KiloSierraCharlie\VATSIM\Exceptions\NotFoundException;
 use KiloSierraCharlie\VATSIM\Exceptions\ServerException;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
-use KiloSierraCharlie\VATSIM\Models\Metar;
 use KiloSierraCharlie\VATSIM\Models\MetarCollection;
 
 final class MetarApi extends APIHandler
@@ -30,7 +29,8 @@ final class MetarApi extends APIHandler
             $response = $this->client->get(
                 '/'.$icao
             );
-            $mets = preg_split("/\R+/", $response->getBody()->getContents(), -1, PREG_SPLIT_NO_EMPTY);   
+            $mets = preg_split("/\R+/", $response->getBody()->getContents(), -1, PREG_SPLIT_NO_EMPTY);
+
             return Hydrator::hydrate(MetarCollection::class, $mets);
         } catch (ClientException $e) {
             $code = $e->getCode();

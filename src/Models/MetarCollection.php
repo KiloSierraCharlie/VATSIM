@@ -9,25 +9,26 @@
  */
 
 namespace KiloSierraCharlie\VATSIM\Models;
+
 use KiloSierraCharlie\VATSIM\Hydration\HydratableFromArray;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 
 final class MetarCollection extends HydratableFromArray
 {
-    protected static function targetClass(): string 
+    protected static function targetClass(): string
     {
         return Metar::class;
     }
-    
+
     public static function fromArray(array $data): static
     {
         $clean = array_values(array_filter(array_map(
-            static fn($v) => is_string($v) ? trim($v) : $v,
+            static fn ($v) => is_string($v) ? trim($v) : $v,
             $data
-        ), static fn($v) => is_string($v) && $v !== ''));
+        ), static fn ($v) => is_string($v) && '' !== $v));
 
         $metars = array_map(
-            static fn(string $line) => Hydrator::hydrate(Metar::class, ["raw" => $line]),
+            static fn (string $line) => Hydrator::hydrate(Metar::class, ['raw' => $line]),
             $clean
         );
 

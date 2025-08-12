@@ -9,12 +9,12 @@
  */
 
 namespace KiloSierraCharlie\VATSIM\Models;
+
 use KiloSierraCharlie\VATSIM\Hydration\HydratableFromArray;
-use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 
 final class EventCollection extends HydratableFromArray
 {
-    protected static function targetClass(): string 
+    protected static function targetClass(): string
     {
         return Event::class;
     }

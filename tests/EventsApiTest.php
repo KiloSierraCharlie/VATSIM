@@ -11,20 +11,13 @@
 namespace KiloSierraCharlie\VATSIM\Tests;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
-use KiloSierraCharlie\VATSIM\Exceptions\AccessDeniedException;
-use KiloSierraCharlie\VATSIM\Exceptions\CertificateNotFoundException;
-use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
-use KiloSierraCharlie\VATSIM\Exceptions\InvalidResponseException;
-use KiloSierraCharlie\VATSIM\Exceptions\MalformedDataException;
 use KiloSierraCharlie\VATSIM\EventsApi;
 use KiloSierraCharlie\VATSIM\Models\EventType;
 use PHPUnit\Framework\TestCase;
-
 
 final class EventsApiTest extends TestCase
 {
@@ -56,6 +49,7 @@ final class EventsApiTest extends TestCase
             'timeout' => 5,
         ]);
     }
+
     public function testAllEventData(): void
     {
         $history = [];
@@ -69,7 +63,7 @@ final class EventsApiTest extends TestCase
 
         // Validate URL is correct.
         $req = $history[0]['request'];
-        $this->assertSame('https://my.vatsim.net/api/v2/events/latest', (string)$req->getUri());
+        $this->assertSame('https://my.vatsim.net/api/v2/events/latest', (string) $req->getUri());
 
         // Validate 3 results returned and parsed into collection.
         $this->assertCount(2, $results->all());

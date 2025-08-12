@@ -19,7 +19,7 @@ abstract class APIHandler
     protected Client $client;
 
     public function __construct(
-        private ?string $apiKey = null
+        private ?string $apiKey = null,
     ) {
         $headers = [
             'Accept' => 'application/json',

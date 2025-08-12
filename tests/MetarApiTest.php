@@ -11,19 +11,12 @@
 namespace KiloSierraCharlie\VATSIM\Tests;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
-use KiloSierraCharlie\VATSIM\Exceptions\AccessDeniedException;
-use KiloSierraCharlie\VATSIM\Exceptions\CertificateNotFoundException;
-use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
-use KiloSierraCharlie\VATSIM\Exceptions\InvalidResponseException;
-use KiloSierraCharlie\VATSIM\Exceptions\MalformedDataException;
 use KiloSierraCharlie\VATSIM\MetarApi;
 use PHPUnit\Framework\TestCase;
-
 
 final class MetarApiTest extends TestCase
 {
@@ -59,6 +52,7 @@ final class MetarApiTest extends TestCase
             'timeout' => 5,
         ]);
     }
+
     public function testApiCallAndData(): void
     {
         $history = [];
@@ -72,7 +66,7 @@ final class MetarApiTest extends TestCase
 
         // Validate URL is correct.
         $req = $history[0]['request'];
-        $this->assertSame('https://metar.vatsim.net/EGL', (string)$req->getUri());
+        $this->assertSame('https://metar.vatsim.net/EGL', (string) $req->getUri());
 
         // Validate 3 results returned and parsed into collection.
         $this->assertCount(3, $results->all());

@@ -9,11 +9,12 @@
  */
 
 namespace KiloSierraCharlie\VATSIM\Models;
+
 use KiloSierraCharlie\VATSIM\Attributes\AsDate;
 use KiloSierraCharlie\VATSIM\Attributes\Mandatory;
 use KiloSierraCharlie\VATSIM\Exceptions\InvalidResponseException;
-use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 use KiloSierraCharlie\VATSIM\Hydration\HydratableFromArray;
+use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 
 final class Metar extends HydratableFromArray
 {
@@ -23,7 +24,7 @@ final class Metar extends HydratableFromArray
     #[Mandatory]
     #[AsDate(format: 'dHi\Z', timezone: 'UTC')]
     public \DateTimeImmutable $observationTime;
-    
+
     public string $data;
 
     public string $raw;
@@ -31,7 +32,7 @@ final class Metar extends HydratableFromArray
     public static function fromArray(array $data): static
     {
         $raw = $data['raw'] ?? null;
-        if (!is_string($raw) || trim($raw) === '') {
+        if (!is_string($raw) || '' === trim($raw)) {
             throw new InvalidResponseException('Metar requires a non-empty raw string');
         }
 

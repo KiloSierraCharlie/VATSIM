@@ -9,12 +9,12 @@
  */
 
 namespace KiloSierraCharlie\VATSIM\Models;
+
 use KiloSierraCharlie\VATSIM\Hydration\HydratableFromArray;
-use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 
 final class OrganiserCollection extends HydratableFromArray
 {
-    protected static function targetClass(): string 
+    protected static function targetClass(): string
     {
         return Organiser::class;
     }

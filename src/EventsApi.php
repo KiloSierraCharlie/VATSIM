@@ -17,26 +17,27 @@ use KiloSierraCharlie\VATSIM\Exceptions\ConnectionFailureException;
 use KiloSierraCharlie\VATSIM\Exceptions\NotFoundException;
 use KiloSierraCharlie\VATSIM\Exceptions\ServerException;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
-use KiloSierraCharlie\VATSIM\Models\EventCollection;
 use KiloSierraCharlie\VATSIM\Models\Event;
+use KiloSierraCharlie\VATSIM\Models\EventCollection;
 
 enum EventFilterLocation: string
 {
-    case DIVISION = "division";
-    case REGION = "region";
+    case DIVISION = 'division';
+    case REGION = 'region';
 }
 
 final class EventsApi extends APIHandler
 {
     protected string $baseURL = 'https://my.vatsim.net/';
 
-    public function getScheduled( ?int $limit = null ): EventCollection
+    public function getScheduled(?int $limit = null): EventCollection
     {
         try {
             $response = $this->client->get(
                 '/api/v2/events/latest'.($limit ? '/'.$limit : '')
             );
-            return Hydrator::fromResponse(EventCollection::class, $response, "data");
+
+            return Hydrator::fromResponse(EventCollection::class, $response, 'data');
         } catch (ClientException $e) {
             $code = $e->getCode();
 
@@ -55,14 +56,15 @@ final class EventsApi extends APIHandler
             throw new ConnectionFailureException($e->getMessage());
         }
     }
-    
-    public function getScheduledInArea( EventFilterLocation $location, string $locationId ): EventCollection
+
+    public function getScheduledInArea(EventFilterLocation $location, string $locationId): EventCollection
     {
         try {
             $response = $this->client->get(
                 '/api/v2/events/view/'.$location->value.'/'.$locationId
             );
-            return Hydrator::fromResponse(EventCollection::class, $response, "data");
+
+            return Hydrator::fromResponse(EventCollection::class, $response, 'data');
         } catch (ClientException $e) {
             $code = $e->getCode();
 
@@ -82,13 +84,14 @@ final class EventsApi extends APIHandler
         }
     }
 
-    public function getEvent( int $eventId ): Event
+    public function getEvent(int $eventId): Event
     {
         try {
             $response = $this->client->get(
                 '/api/v2/events/view/'.$eventId
             );
-            return Hydrator::fromResponse(Event::class, $response, "data");
+
+            return Hydrator::fromResponse(Event::class, $response, 'data');
         } catch (ClientException $e) {
             $code = $e->getCode();
 
