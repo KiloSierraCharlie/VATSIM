@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace KiloSierraCharlie\VATSIM;
+namespace KiloSierraCharlie\VATSIM\Api;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\TransferException;
@@ -20,8 +20,9 @@ use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 use KiloSierraCharlie\VATSIM\Models\EventApi\Event;
 use KiloSierraCharlie\VATSIM\Models\EventApi\EventCollection;
 use KiloSierraCharlie\VATSIM\Enums\FilterLocations;
+use KiloSierraCharlie\VATSIM\APIHandler;
 
-final class EventsApi extends APIHandler
+final class Events extends APIHandler
 {
     protected string $baseURL = 'https://my.vatsim.net/';
 

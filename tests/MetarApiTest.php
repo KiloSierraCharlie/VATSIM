@@ -15,7 +15,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
-use KiloSierraCharlie\VATSIM\MetarApi;
+use KiloSierraCharlie\VATSIM\Api\Metar;
 use PHPUnit\Framework\TestCase;
 
 final class MetarApiTest extends TestCase
@@ -26,9 +26,9 @@ final class MetarApiTest extends TestCase
         EGLK 042120Z 24010KT 9999 SCT030 23/13 Q1016
     METAR;
 
-    private function makeApi(Client $client): MetarApi
+    private function makeApi(Client $client): Metar
     {
-        $api = new MetarApi();
+        $api = new Metar();
 
         $ref = new \ReflectionClass($api);
         $prop = $ref->getProperty('client');

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace KiloSierraCharlie\VATSIM;
+namespace KiloSierraCharlie\VATSIM\Api;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\TransferException;
@@ -22,8 +22,9 @@ use KiloSierraCharlie\VATSIM\Models\DataApi\ATISCollection;
 use KiloSierraCharlie\VATSIM\Models\DataApi\AudioClientCollection;
 use KiloSierraCharlie\VATSIM\Models\DataApi\NetworkData;
 use KiloSierraCharlie\VATSIM\Models\DataApi\ServerCollection;
+use KiloSierraCharlie\VATSIM\APIHandler;
 
-final class DataApi extends APIHandler
+final class Data extends APIHandler
 {
     protected string $baseURL = 'https://data.vatsim.net/';
 

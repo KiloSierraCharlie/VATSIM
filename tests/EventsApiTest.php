@@ -15,7 +15,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
-use KiloSierraCharlie\VATSIM\EventsApi;
+use KiloSierraCharlie\VATSIM\Api\Events;
 use KiloSierraCharlie\VATSIM\Enums\EventType;
 use PHPUnit\Framework\TestCase;
 
@@ -23,9 +23,9 @@ final class EventsApiTest extends TestCase
 {
     private const TEST_DATA = '{"data":[{"id":12000,"type":"Event","name":"TEST_EVENT","link":"TEST_LINK","organisers":[{"region":"TEST_REGION","division":"TEST_DIVISION","subdivision":null,"organised_by_vatsim":false}],"airports":[{"icao":"EGLL"},{"icao":"EGKK"}],"routes":[{"departure":"EGLL","arrival":"EGKK","route":"TEST_ROUTE"}],"start_time":"2025-08-12T16:00:00.000000Z","end_time":"2025-08-12T19:00:00.000000Z","short_description":"TEST_SHORT_DESC","description":"TEST_DESC","banner":"TEST_BANNER"},{"id":99111,"type":"Event","name":"TEST_EVENT","link":"TEST_LINK","organisers":[],"airports":[],"routes":[],"start_time":"2025-08-12T16:00:00.000000Z","end_time":"2025-08-12T19:00:00.000000Z","short_description":"TEST_SHORT_DESC","description":"TEST_DESC","banner":"TEST_BANNER"}]}';
 
-    private function makeApi(Client $client): EventsApi
+    private function makeApi(Client $client): Events
     {
-        $api = new EventsApi();
+        $api = new Events();
 
         $ref = new \ReflectionClass($api);
         $prop = $ref->getProperty('client');

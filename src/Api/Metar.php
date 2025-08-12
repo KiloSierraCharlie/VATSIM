@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace KiloSierraCharlie\VATSIM;
+namespace KiloSierraCharlie\VATSIM\Api;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\TransferException;
@@ -18,8 +18,9 @@ use KiloSierraCharlie\VATSIM\Exceptions\NotFoundException;
 use KiloSierraCharlie\VATSIM\Exceptions\ServerException;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 use KiloSierraCharlie\VATSIM\Models\MetarApi\MetarCollection;
+use KiloSierraCharlie\VATSIM\APIHandler;
 
-final class MetarApi extends APIHandler
+final class Metar extends APIHandler
 {
     protected string $baseURL = 'https://metar.vatsim.net';
 
