@@ -41,7 +41,7 @@ final class Event
 
     public OrganiserCollection $organisers;
 
-    public array $airports;
+    public AirportCollection $airports;
 
     public RouteCollection $routes;
         

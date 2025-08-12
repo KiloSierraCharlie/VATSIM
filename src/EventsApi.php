@@ -82,7 +82,7 @@ final class EventsApi extends APIHandler
         }
     }
 
-    public function getEvent( int $eventId = null ): Event
+    public function getEvent( int $eventId ): Event
     {
         try {
             $response = $this->client->get(
