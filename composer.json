@@ -1,0 +1,32 @@
+{
+    "version": "0.1",
+    "name": "kilosierracharlie/vatsim",
+    "description": "A PHP library for interacting with the VATSIM APIs.",
+    "keywords": ["VATSIM", "air traffic control", "pilot", "ATC", "simulation"],
+    "minimum-stability": "alpha",
+    "homepage": "https://github.com/KiloSierraCharlie/VATSIM",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Kieran Cross",
+            "homepage": "https://github.com/KiloSierraCharlie"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"KiloSierraCharlie\\VATSIM\\": "src/"},
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KiloSierraCharlie\\VATSIM\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.3"
+    }
+}
