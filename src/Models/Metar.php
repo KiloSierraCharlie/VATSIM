@@ -15,7 +15,7 @@ use KiloSierraCharlie\VATSIM\Exceptions\InvalidResponseException;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 use KiloSierraCharlie\VATSIM\Hydration\HydratableFromArray;
 
-final class Metar implements HydratableFromArray
+final class Metar extends HydratableFromArray
 {
     #[Mandatory]
     public string $icao;

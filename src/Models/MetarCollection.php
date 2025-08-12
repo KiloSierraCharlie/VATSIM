@@ -12,7 +12,7 @@ namespace KiloSierraCharlie\VATSIM\Models;
 use KiloSierraCharlie\VATSIM\Hydration\HydratableFromArray;
 use KiloSierraCharlie\VATSIM\Hydration\Hydrator;
 
-class MetarCollection implements HydratableFromArray
+final class MetarCollection extends HydratableFromArray
 {
     /** @var Metar[] */
     public array $metars = [];

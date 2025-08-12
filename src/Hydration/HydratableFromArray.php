@@ -8,7 +8,19 @@
  */
 namespace KiloSierraCharlie\VATSIM\Hydration;
 
-interface HydratableFromArray
+abstract class HydratableFromArray
 {
-    public static function fromArray(array $data): static;
+    protected static function targetClass(): string 
+    {
+        return static::class;
+    }    
+
+    public static function fromArray(array $data): static
+    {
+        $items = array_map(
+            static fn(array $row) => Hydrator::hydrate(static::targetClass(), $row),
+            $data
+        );
+        return new static(...$items);
+    }
 }
