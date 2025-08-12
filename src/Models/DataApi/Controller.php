@@ -11,6 +11,8 @@
 namespace KiloSierraCharlie\VATSIM\Models\DataApi;
 
 use KiloSierraCharlie\VATSIM\Attributes\AsDate;
+use KiloSierraCharlie\VATSIM\Attributes\AsEnum;
+use KiloSierraCharlie\VATSIM\Enums\ControllerRating;
 
 final class Controller
 {
@@ -18,7 +20,8 @@ final class Controller
     public string $name;
     public string $callsign;
     public string $frequency;
-    public int $rating;
+    #[AsEnum(enumClass: ControllerRating::class)]
+    public ControllerRating $rating;
     public string $server;
     public int $visual_range;
     public ?array $text_atis = null;

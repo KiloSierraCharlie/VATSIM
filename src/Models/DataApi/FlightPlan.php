@@ -12,10 +12,13 @@ namespace KiloSierraCharlie\VATSIM\Models\DataApi;
 
 use KiloSierraCharlie\VATSIM\Attributes\AsDate;
 use KiloSierraCharlie\VATSIM\Hydration\HydrateFromModel;
+use KiloSierraCharlie\VATSIM\Enums\FlightRules;
+use KiloSierraCharlie\VATSIM\Attributes\AsEnum;
 
 final class FlightPlan extends HydrateFromModel
 {
-    public string $flight_rules;
+    #[AsEnum(enumClass: FlightRules::class, default: FlightRules::UNKNOWN)]
+    public FlightRules $flight_rules;
     public string $aircraft;
     public string $aircraft_faa;
     public string $aircraft_short;

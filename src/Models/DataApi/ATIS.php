@@ -11,6 +11,7 @@
 namespace KiloSierraCharlie\VATSIM\Models\DataApi;
 
 use KiloSierraCharlie\VATSIM\Attributes\AsDate;
+use KiloSierraCharlie\VATSIM\Attributes\AsEnum;
 use KiloSierraCharlie\VATSIM\Enums\ControllerRating;
 
 final class ATIS
@@ -21,6 +22,7 @@ final class ATIS
     public string $callsign;
     public string $frequency;
     public int $facility;
+    #[AsEnum(enumClass: ControllerRating::class)]
     public ControllerRating $rating;
     public float $latitude;
     public float $longitude;
